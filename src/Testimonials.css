@@ -1,0 +1,223 @@
+/* ═══════════════════════════════════════
+   TESTIMONIALS — AE CUPS
+   Option C — single centered quote
+═══════════════════════════════════════ */
+
+.testimonials {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  background-color: var(--color-page);
+  background-image:
+    radial-gradient(ellipse at 15% 50%, rgba(196,127,53,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 30%, rgba(92,45,15,0.04)  0%, transparent 50%);
+  overflow: hidden;
+  min-height: 500px;
+  transition: background-color 0.6s ease;
+}
+
+/* ── decorative side lines ── */
+.testimonials__line {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(196, 127, 53, 0.3),
+    transparent
+  );
+}
+.testimonials__line--left  { left: 3rem; }
+.testimonials__line--right { right: 3rem; }
+
+/* ── section label ── */
+.testimonials__label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-caramel);
+  margin-bottom: 2.5rem;
+}
+
+/* ── quote area ── */
+.testimonials__quote-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 620px;
+  min-height: 200px;
+  justify-content: center;
+}
+
+/* big decorative quote mark */
+.testimonials__quote-mark {
+  font-family: 'Playfair Display', serif;
+  font-size: 7rem;
+  color: rgba(196, 127, 53, 0.1);
+  line-height: 0.6;
+  margin-bottom: 1rem;
+  user-select: none;
+  transition: color 0.6s ease;
+}
+
+/* ── quote text ── */
+.testimonials__text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-heading);
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.45s ease, transform 0.45s ease, color 0.6s ease;
+}
+
+.testimonials__text--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── author ── */
+.testimonials__author {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  margin-top: 1.5rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.45s ease 0.15s, transform 0.45s ease 0.15s;
+}
+
+.testimonials__author--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.testimonials__author-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-caramel);
+}
+
+.testimonials__author-location {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--color-muted);
+  transition: color 0.6s ease;
+}
+
+.testimonials__stars {
+  color: var(--color-honey);
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  margin-top: 4px;
+}
+
+/* ── dots ── */
+.testimonials__dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 2.5rem;
+}
+
+.testimonials__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(196, 127, 53, 0.25);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.testimonials__dot--active {
+  background: var(--color-caramel);
+  transform: scale(1.35);
+}
+
+.testimonials__dot:hover:not(.testimonials__dot--active) {
+  background: rgba(196, 127, 53, 0.5);
+}
+
+/* ── arrows ── */
+.testimonials__arrows {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.8rem;
+}
+
+.testimonials__arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(196, 127, 53, 0.35);
+  background: transparent;
+  color: var(--color-caramel);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+  font-family: serif;
+}
+
+.testimonials__arrow:hover {
+  background: var(--color-caramel);
+  color: var(--color-page);
+  transform: scale(1.08);
+}
+
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+
+@media (max-width: 700px) {
+  .testimonials {
+    padding: 5rem 1.5rem;
+  }
+
+  .testimonials__line {
+    display: none;
+  }
+
+  .testimonials__quote-mark {
+    font-size: 5rem;
+  }
+
+  .testimonials__text {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+  }
+}
+
+@media (max-width: 420px) {
+  .testimonials {
+    padding: 4rem 1rem;
+    min-height: auto;
+  }
+
+  .testimonials__arrows {
+    gap: 0.75rem;
+  }
+
+  .testimonials__arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+}

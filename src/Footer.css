@@ -1,0 +1,94 @@
+.footer {
+  background-color: var(--color-navbar); /* espresso dark */
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  padding: 15px 4rem;
+  align-items: center;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.footer__logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-style: italic;
+  color: var(--color-honey);
+  letter-spacing: 0.04em;
+}
+
+.footer__copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.88rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-on-dark-muted);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.footer__copy span {
+  color: var(--color-caramel);
+}
+
+.footer__right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer__cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-cta-text);
+  background-color: var( --color-honey);
+  border: none;
+  padding: 0.75rem 1.6rem;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.footer__cta:hover {
+  background: var(--color-cta-hover);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 780px) {
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;          /* single column stack */
+    padding: .5rem .5rem;
+    text-align: center;
+    gap: 1.2rem;
+  }
+
+  .footer__logo {
+    text-align: center;
+    font-size: 20px;
+    padding: 2px;
+  }
+
+  .footer__copy {
+    white-space: normal;                    /* allow wrapping on very narrow screens */
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;                 /* tighten so it doesn't overflow */
+  }
+
+  .footer__right {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 380px) {
+  .footer {
+    padding: 0.5rem;
+  }
+
+  .footer__cta {                        /* full-width tap target on very small phones */
+    text-align: center;
+    padding: 0.25rem 0.75rem;
+  }
+}

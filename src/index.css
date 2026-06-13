@@ -1,0 +1,96 @@
+/* ═══════════════════════════════════════
+   AE CUPS — DESIGN TOKENS
+   Dark mode color scheme
+═══════════════════════════════════════ */
+
+:root {
+
+  /* ── Backgrounds ── */
+  --color-page:         #0a0602;               /* Black                          */
+  --color-section:      #120a04;               /* Espresso dark                  */
+  --color-card:         #2b1506;               /* Roast                          */
+  --color-card-hover:   #5c2d0f;               /* Mahogany                       */
+  --color-navbar:       #2b1506;               /* Roast                          */
+  --color-footer:       #120a04;               /* Espresso dark                  */
+  --color-ticker:       #5c2d0f;               /* Mahogany                       */
+
+  /* ── Borders & Dividers ── */
+  --color-border:       rgba(196, 127, 53, 0.25);  /* Caramel 25%               */
+  --color-divider:      rgba(196, 127, 53, 0.12);  /* Caramel 12%               */
+
+  /* ── Accents ── */
+  --color-caramel:      #c47f35;               /* labels, prices, eyebrows       */
+  --color-honey:        #e9a94a;               /* logo on dark, hover glow       */
+  --color-amber:        #f0c070;               /* button hover state             */
+
+  /* ── Logo ── */
+  --color-logo:         #e9a94a;               /* Honey — glows on dark navbar   */
+
+  /* ── CTA Button ── */
+  --color-cta-bg:       #e9a94a;               /* Honey — pops on dark bg        */
+  --color-cta-text:     #0a0602;               /* Black — text on honey button   */
+  --color-cta-hover:    #f0c070;               /* Amber                          */
+
+  /* ── Text ── */
+  --color-heading:      #f5e6cc;               /* Cream                          */
+  --color-body:         #d4a574;               /* Light caramel                  */
+  --color-muted:        rgba(245,230,204,0.4); /* Cream 40%                      */
+  --color-label:        #c47f35;               /* Caramel                        */
+  --color-text:         #f5e6cc;               /* Cream                          */
+
+  /* ── Text on dark sections ── */
+  --color-on-dark:        #f5e6cc;                 /* Cream                      */
+  --color-on-dark-muted:  rgba(245,230,204,0.55);  /* Cream 55%                  */
+
+  /* ── Icons ── */
+  --color-icon:         #f0c070;               /* Amber                          */
+
+  /* ── Shadows ── */
+  --shadow-warm:        0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-card:        0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: var(--color-page);
+  color: var(--color-text);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+main,
+#root {
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-heading);
+  font-family: 'Playfair Display', serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: italic;
+}
+
+p {
+  font-family: "Cormorant Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: italic;
+}
+
+nav {
+  font-family: "Cormorant SC", serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
