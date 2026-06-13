@@ -1,13 +1,13 @@
 import { useEffect } from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Nav from "./Nav.jsx"
-import Hero from "./hero.jsx"
+import Hero from "./Hero.jsx"
 import Menu from "./Menu.jsx"
 import About from "./About.jsx"
 import Testimonials from "./Testimonials.jsx"
 import Contact from "./Contact.jsx"
 import Footer from "./Footer.jsx"
-import Checkout from "./checkout.jsx"
+import Checkout from "./Checkout.jsx"
 import { CartProvider } from "./context/CartContext"
 
 function App() {
