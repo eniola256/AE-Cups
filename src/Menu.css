@@ -140,7 +140,7 @@
 @media (max-width: 520px) {
 
   .menu {
-    padding: 0;
+    padding: 2rem;
   }
 
   .menu-main-head h2 {

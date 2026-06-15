@@ -89,20 +89,6 @@
   width: 75%;
   height: 55%;
   z-index: 999;
-
-   --swirl-color-1: rgba(28,  10,  3,   1);   /* near black       */
-  --swirl-color-2: rgba(18,  6,   1,   1);   /* darkest roast    */
-  --swirl-color-3: rgba(55,  22,  6,   1);   /* deep brown       */
-  --swirl-color-4: rgba(12,  4,   1,   1);   /* almost black     */
-  --swirl-color-5: rgba(40,  15,  4,   1);   /* dark roast       */
-
-  --swirl-opacity-center: 0.98;
-  --swirl-opacity-middle: 0.75;
-  --swirl-opacity-edge:   0;
-
-  --swirl-stop-center: 0;
-  --swirl-stop-middle: 0.35;
-  --swirl-stop-edge:   1;
 }
 
 /* cup image */
