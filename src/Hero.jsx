@@ -89,7 +89,7 @@ function Hero() {
   }, [])
 
   return (
-    <section className="hero">
+    <section className="hero" id="hero">
       <div className="hero__text-left">
         <p>Every cup is a moment.</p>
         <p>Crafted slow.</p>
@@ -118,4 +118,4 @@ function Hero() {
   )
 }
 
-export default Hero
+export default Hero 

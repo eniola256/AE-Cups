@@ -93,4 +93,10 @@ nav {
   font-weight: 300;
   font-style: italic;
 }
+section {
+  scroll-margin-top: 80px; /* match your navbar height */
+}
 
+#menu {
+  scroll-margin-top: 60px; /* match your navbar height */
+}

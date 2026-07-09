@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons"
 import { Link } from "react-router-dom"
 import { useCart } from "./context/CartContext.jsx"
+import { HashLink } from "react-router-hash-link"
 
 
 function Nav() {
@@ -16,11 +17,11 @@ function Nav() {
         <span className="nav-logo">AE CUPS</span>
       </div>
       <div className="nav-links">
-        <Link to="/">About</Link>
-        <Link to="/menu">Menu</Link>
-        <Link to="/order">Order</Link>
-        <Link to="/contact">Contact</Link>
-      </div>
+        <HashLink smooth to="/#hero">Home</HashLink>
+      <HashLink smooth to="/#about">About</HashLink>
+      <HashLink smooth to="/#menu">Menu</HashLink>
+      <HashLink smooth to="/#contact">Contact</HashLink>
+    </div>
 
       <div className="nav__actions">
 
