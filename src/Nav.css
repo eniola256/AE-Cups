@@ -169,7 +169,7 @@
   /* mobile dropdown — stays dark like navbar */
   .nav__mobile-menu {
     position: absolute;
-    top: 110%;
+    top: 100%;
     left: 0;
     right: 0;
     background: var(--color-navbar);          /* stays espresso dark */
