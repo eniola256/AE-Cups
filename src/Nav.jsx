@@ -14,7 +14,7 @@ function Nav() {
   return (
     <nav className={`nav ${menuOpen ? "nav--open" : ""}`}>
       <div className="nav__brand">
-        <span className="nav-logo">AE CUPS</span>
+        <HashLink smooth to="/#hero"><span className="nav-logo">AE CUPS</span></HashLink>
       </div>
       <div className="nav-links">
         <HashLink smooth to="/#hero">Home</HashLink>
@@ -48,10 +48,10 @@ function Nav() {
       </div>
 
       <div className={`nav__mobile-menu ${menuOpen ? "open" : ""}`}>
-        <Link to="/">About</Link>
-        <Link to="/menu">Menu</Link>
-        <Link to="/order">Order</Link>
-        <Link to="/contact">Contact</Link>
+        <HashLink smooth to="/#hero">Home</HashLink>
+      <HashLink smooth to="/#about">About</HashLink>
+      <HashLink smooth to="/#menu">Menu</HashLink>
+      <HashLink smooth to="/#contact">Contact</HashLink>
         <Link to="/checkout" className="order-btn-mobile">
           Order Now
         </Link>

@@ -20,7 +20,12 @@
   font-size: 1.5rem;
   font-weight: 700;
   font-style: italic;
-  color: var(--color-honey);                  /* espresso light → honey dark */
+  color: var(--color-honey);   
+  text-decoration: none;               /* espresso light → honey dark */
+}
+
+.nav__brand a {
+  text-decoration: none;
 }
 
 /* ── Links ── */
@@ -229,3 +234,27 @@
     background-color: var(--color-cta-hover);
   }
 }
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* base — all three columns start invisible */
+.hero__text-left,
+.hero__text-right,
+.hero__media {
+  opacity: 0;
+  animation: fadeUp 0.9s ease forwards;
+}
+
+/* stagger — each one fades in slightly after the previous */
+.hero__text-left  { animation-delay: 0.2s; }
+.hero__media      { animation-delay: 0.5s; }
+.hero__text-right { animation-delay: 0.8s; }
