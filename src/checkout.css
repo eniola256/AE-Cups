@@ -444,6 +444,69 @@
   line-height: 1.5;
 }
 
+/* ── empty & success screens ── */
+.checkout--empty,
+.checkout--success {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-page);
+}
+
+.checkout__empty-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  max-width: 420px;
+  padding: 2rem;
+}
+
+.checkout__success-icon {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.checkout__back-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-cta-text);
+  background: var(--color-cta-bg);
+  padding: 0.85rem 2rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.checkout__back-btn:hover {
+  background: var(--color-cta-hover);
+  transform: translateY(-2px);
+}
+
+/* ── remove button ── */
+.checkout__remove-btn {
+  background: none;
+  border: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(196, 127, 53, 0.5);
+  cursor: pointer;
+  padding: 0;
+  margin-top: 6px;
+  transition: color 0.2s ease;
+}
+
+.checkout__remove-btn:hover {
+  color: #c0503a;
+}
 
 /* ═══════════════════════════════════════
    RESPONSIVE

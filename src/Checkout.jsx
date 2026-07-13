@@ -1,39 +1,80 @@
-
-
+import { useState } from "react"
+import { Link } from "react-router-dom"
+import { useCart } from "./context/CartContext"
 import "./checkout.css"
 
-const cartItems = [
-  {
-    id: 1,
-    name: "Flat White",
-    desc: "Double ristretto, velvety microfoam",
-    price: 5.00,
-    quantity: 2,
-    emoji: "☕",
-  },
-  {
-    id: 2,
-    name: "Cold Brew",
-    desc: "Steeped 18 hours, smooth and bold",
-    price: 5.50,
-    quantity: 1,
-    emoji: "🧊",
-  },
-  {
-    id: 3,
-    name: "Croissant",
-    desc: "Buttery, flaky, baked fresh daily",
-    price: 4.00,
-    quantity: 2,
-    emoji: "🥐",
-  },
-]
-
 function Checkout() {
-  const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
+  const {
+    cartItems,
+    updateQuantity,
+    removeFromCart,
+    clearCart,
+    subtotal,
+  } = useCart()
+
+  const [fulfilment, setFulfilment] = useState("pickup")
+  const [notes, setNotes]           = useState("")
+  const [name, setName]             = useState("")
+  const [phone, setPhone]           = useState("")
+  const [email, setEmail]           = useState("")
+  const [promo, setPromo]           = useState("")
+  const [ordered, setOrdered]       = useState(false)
+
   const tax      = subtotal * 0.075
-  const delivery = 1.50
+  const delivery = fulfilment === "delivery" ? 1.50 : 0
   const total    = subtotal + tax + delivery
+
+  function handlePlaceOrder() {
+    if (!name || !phone) {
+      alert("Please fill in your name and phone number.")
+      return
+    }
+    clearCart()
+    setOrdered(true)
+  }
+
+  /* ── success screen ── */
+  if (ordered) {
+    return (
+      <div className="checkout checkout--success">
+        <div className="checkout__empty-inner">
+          <div className="checkout__success-icon">☕</div>
+          <div className="checkout__label">— Order confirmed</div>
+          <h1 className="checkout__title">
+            Your cup is <em>on its way.</em>
+          </h1>
+          <p className="checkout__note">
+            Thank you, {name}. We'll have your order ready shortly.
+            Payment on {fulfilment}.
+          </p>
+          <Link to="/#menu" className="checkout__back-btn">
+            Order more →
+          </Link>
+        </div>
+      </div>
+    )
+  }
+
+  /* ── empty cart screen ── */
+  if (cartItems.length === 0) {
+    return (
+      <div className="checkout checkout--empty">
+        <div className="checkout__empty-inner">
+          <div className="checkout__success-icon">☕</div>
+          <div className="checkout__label">— Nothing here yet</div>
+          <h1 className="checkout__title">
+            Your cart is <em>empty.</em>
+          </h1>
+          <p className="checkout__note">
+            Head back to the menu and pick something you'll love.
+          </p>
+          <Link to="/#menu" className="checkout__back-btn">
+            Browse the menu →
+          </Link>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="checkout">
@@ -69,15 +110,35 @@ function Checkout() {
                   <div className="checkout__item-info">
                     <div className="checkout__item-name">{item.name}</div>
                     <div className="checkout__item-desc">{item.desc}</div>
-                    <div className="checkout__item-price">${item.price.toFixed(2)} each</div>
+                    <div className="checkout__item-price">
+                      ${item.price.toFixed(2)} each
+                    </div>
+                    <button
+                      className="checkout__remove-btn"
+                      onClick={() => removeFromCart(item.id)}
+                    >
+                      Remove
+                    </button>
                   </div>
                 </div>
 
                 {/* quantity */}
                 <div className="checkout__item-qty">
-                  <button className="checkout__qty-btn" aria-label="Decrease quantity">−</button>
+                  <button
+                    className="checkout__qty-btn"
+                    aria-label="Decrease quantity"
+                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                  >
+                    −
+                  </button>
                   <span className="checkout__qty-num">{item.quantity}</span>
-                  <button className="checkout__qty-btn" aria-label="Increase quantity">+</button>
+                  <button
+                    className="checkout__qty-btn"
+                    aria-label="Increase quantity"
+                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                  >
+                    +
+                  </button>
                 </div>
 
                 {/* total */}
@@ -97,6 +158,8 @@ function Checkout() {
                 type="text"
                 className="checkout__promo-input"
                 placeholder="Enter code..."
+                value={promo}
+                onChange={(e) => setPromo(e.target.value)}
               />
               <button className="checkout__promo-btn">Apply</button>
             </div>
@@ -114,9 +177,27 @@ function Checkout() {
           {/* customer details */}
           <div className="checkout__summary-section">
             <div className="checkout__summary-section-title">Your details</div>
-            <input type="text"  className="checkout__input" placeholder="Full name" />
-            <input type="tel"   className="checkout__input" placeholder="Phone number" />
-            <input type="email" className="checkout__input" placeholder="Email address" />
+            <input
+              type="text"
+              className="checkout__input"
+              placeholder="Full name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              type="tel"
+              className="checkout__input"
+              placeholder="Phone number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+            <input
+              type="email"
+              className="checkout__input"
+              placeholder="Email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
 
           {/* pickup or delivery */}
@@ -124,21 +205,39 @@ function Checkout() {
             <div className="checkout__summary-section-title">Fulfilment</div>
             <div className="checkout__radio-group">
               <label className="checkout__radio">
-                <input type="radio" name="fulfilment" defaultChecked /> Pickup
+                <input
+                  type="radio"
+                  name="fulfilment"
+                  value="pickup"
+                  checked={fulfilment === "pickup"}
+                  onChange={() => setFulfilment("pickup")}
+                />
+                Pickup
               </label>
               <label className="checkout__radio">
-                <input type="radio" name="fulfilment" /> Delivery
+                <input
+                  type="radio"
+                  name="fulfilment"
+                  value="delivery"
+                  checked={fulfilment === "delivery"}
+                  onChange={() => setFulfilment("delivery")}
+                />
+                Delivery
               </label>
             </div>
           </div>
 
           {/* special instructions */}
           <div className="checkout__summary-section">
-            <div className="checkout__summary-section-title">Special instructions</div>
+            <div className="checkout__summary-section-title">
+              Special instructions
+            </div>
             <textarea
               className="checkout__textarea"
               placeholder="e.g. oat milk, no sugar, extra hot..."
               rows={3}
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
             />
           </div>
 
@@ -150,7 +249,9 @@ function Checkout() {
             </div>
             <div className="checkout__breakdown-row">
               <span>Delivery</span>
-              <span>${delivery.toFixed(2)}</span>
+              <span>
+                {fulfilment === "pickup" ? "Free" : `$${delivery.toFixed(2)}`}
+              </span>
             </div>
             <div className="checkout__breakdown-row">
               <span>Tax (7.5%)</span>
@@ -164,16 +265,18 @@ function Checkout() {
           </div>
 
           {/* place order */}
-          <button className="checkout__place-order">
+          <button
+            className="checkout__place-order"
+            onClick={handlePlaceOrder}
+          >
             Place Order →
           </button>
 
           <p className="checkout__note">
-            Payment on pickup or delivery. No card needed.
+            Payment on {fulfilment}. No card needed.
           </p>
 
         </div>
-
       </div>
     </div>
   )
