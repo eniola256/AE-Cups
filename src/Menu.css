@@ -87,6 +87,12 @@
   padding: 0.3rem 0.8rem;
   cursor: pointer;
   color: var(--color-text);
+  transition: background 0.15s ease, transform 0.2s ease, border-color 0.25s ease;
+}
+.get-btn:active{
+  background: var(--color-logo);
+  transform: translateY(-1px);
+  border-color: var(--color-card-hover);
 }
 
 /* Price */

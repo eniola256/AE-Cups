@@ -80,6 +80,11 @@
   .footer__right {
     justify-content: center;
   }
+  .footer__cta {                        /* full-width tap target on very small phones */
+    text-align: center;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.75rem;
+  }
 }
 
 @media (max-width: 380px) {
@@ -89,6 +94,6 @@
 
   .footer__cta {                        /* full-width tap target on very small phones */
     text-align: center;
-    padding: 0.25rem 0.75rem;
+    padding: 0.15rem 0.45rem;
   }
 }

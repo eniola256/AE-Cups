@@ -201,7 +201,8 @@
     gap: 0.5rem;
     align-items: center;
     text-align: center;
-    overflow: hidden;      
+    overflow: hidden;   
+    margin-top: 3rem;   
   }
 
   .hero__text-left {
